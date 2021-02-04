@@ -16,22 +16,21 @@ class MainWindow(qtw.QWidget):
 		my_label.setFont(qtg.QFont('Helvetica', 24))
 		self.layout().addWidget(my_label)
 
-		# Create an Combo box
-		my_combo = qtw.QComboBox(self, 
-			editable=True,
-			insertPolicy=qtw.QComboBox.InsertAtBottom)
-
-		# Add Items To The Combo Box
-		my_combo.addItem("Pepperoni", "Something")
-		my_combo.addItem("Cheese", 2)
-		my_combo.addItem("Mushroom", qtw.QWidget)
-		my_combo.addItem("Peppers")
-		my_combo.addItems(["One", "Two", "Three"])
-		my_combo.insertItems(2, ["One", "two", "Third Thing"])
-
+		# Create an Spin box
+		my_spin = qtw.QSpinBox(self,
+			value=10,
+			maximum=100,
+			minimum=0,
+			singleStep=5,
+			prefix="#",
+			suffix="!!!",
+			)
+		# Change font size of spinbox
+		my_spin.setFont(qtg.QFont('Helvetica', 18))
+		
 
 		# Put combobox on the screen
-		self.layout().addWidget(my_combo)
+		self.layout().addWidget(my_spin)
 
 		# Create a button
 		my_button = qtw.QPushButton("Press Me!", 
@@ -43,7 +42,7 @@ class MainWindow(qtw.QWidget):
 
 		def press_it():
 			# Add name to label
-			my_label.setText(f'You Picked {my_combo.currentText()}!')
+			my_label.setText(f'You Picked {my_spin.value()}!')
 			
 
 app = qtw.QApplication([])
