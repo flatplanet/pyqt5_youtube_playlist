@@ -1,5 +1,3 @@
-
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
@@ -31,7 +29,7 @@ class Ui_MainWindow(object):
         font.setPointSize(26)
         self.cButton.setFont(font)
         self.cButton.setObjectName("cButton")
-        self.arrowButton = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.press_it("<<"))
+        self.arrowButton = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.remove_it())
         self.arrowButton.setGeometry(QtCore.QRect(190, 110, 75, 75))
         font = QtGui.QFont()
         font.setPointSize(26)
@@ -115,19 +113,19 @@ class Ui_MainWindow(object):
         font.setPointSize(26)
         self.twoButton.setFont(font)
         self.twoButton.setObjectName("twoButton")
-        self.equalButton = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.press_it("="))
+        self.equalButton = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.math_it())
         self.equalButton.setGeometry(QtCore.QRect(275, 470, 75, 75))
         font = QtGui.QFont()
         font.setPointSize(26)
         self.equalButton.setFont(font)
         self.equalButton.setObjectName("equalButton")
-        self.decimalButton = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.press_it("."))
+        self.decimalButton = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.dot_it())
         self.decimalButton.setGeometry(QtCore.QRect(190, 470, 75, 75))
         font = QtGui.QFont()
         font.setPointSize(26)
         self.decimalButton.setFont(font)
         self.decimalButton.setObjectName("decimalButton")
-        self.plusminusButton = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.press_it("+/-"))
+        self.plusminusButton = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.plus_minus_it())
         self.plusminusButton.setGeometry(QtCore.QRect(10, 470, 75, 75))
         font = QtGui.QFont()
         font.setPointSize(26)
@@ -150,6 +148,48 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+
+    # Remove character
+    def remove_it(self):
+        # Grab what's on the screen already
+        screen = self.outputLabel.text()
+        # Remove last item in list/string
+        screen = screen[:-1]
+        # Output back to the screen
+        self.outputLabel.setText(screen)
+
+    # Let's Do Some Math!
+    def math_it(self):
+        # Grab what's on the screen already
+        screen = self.outputLabel.text()
+        try:
+            # Do the math
+            answer = eval(screen)
+            # Output answer to the screen
+            self.outputLabel.setText(str(answer))
+        except:
+            # Output error to the screen
+            self.outputLabel.setText("ERROR")
+
+    # Change from positive/negative
+    def plus_minus_it(self):
+        # Grab what's on the screen already
+        screen = self.outputLabel.text()
+        if "-" in screen:
+            self.outputLabel.setText(screen.replace("-", ""))
+        else:
+            self.outputLabel.setText(f'-{screen}')
+
+    # Add a decimal
+    def dot_it(self):
+        # Grab what's on the screen already
+        screen = self.outputLabel.text()
+
+        if screen[-1] == ".":
+            pass
+        else:
+            self.outputLabel.setText(f'{screen}.')         
 
     def press_it(self, pressed):
         if pressed == "C":
