@@ -2,17 +2,15 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 import sqlite3
 
-# Create a database or connect to one
+# Create a database or connect to one that exists
 conn = sqlite3.connect('mylist.db')
-# Create a cursor
+# Create a cursor instance
 c = conn.cursor()
-
-# Create a table
-c.execute("""CREATE TABLE if not exists todo_list(
+# Create Table
+c.execute("""CREATE TABLE if not exists todo_list (
     list_item text)
     """)
-
-# Commit the changes
+# Commit changes
 conn.commit()
 
 # Close our connection
@@ -24,6 +22,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(521, 365)
+                
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.additem_pushButton = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.add_it())
@@ -55,28 +54,23 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-
-        # Grab all the items from the database
         self.grab_all()
-    
-    # Grab items from database
-    def grab_all(self):
-        # Create a database or connect to one
-        conn = sqlite3.connect('mylist.db')
-        # Create a cursor
-        c = conn.cursor()
 
+    def grab_all(self):
+        # Create a database or connect to one that exists
+        conn = sqlite3.connect('mylist.db')
+        # Create a cursor instance
+        c = conn.cursor()
+        
         c.execute("SELECT * FROM todo_list")
         records = c.fetchall()
 
-
-        # Commit the changes
+        # Commit changes
         conn.commit()
 
         # Close our connection
         conn.close()
 
-        # Loop thru records and add to screen
         for record in records:
             self.mylist_listWidget.addItem(str(record[0]))
 
@@ -105,16 +99,13 @@ class Ui_MainWindow(object):
 
     # Save To The Database
     def save_it(self):
-        # Create a database or connect to one
         conn = sqlite3.connect('mylist.db')
-        # Create a cursor
+        # Create a cursor instance
         c = conn.cursor()
+        # Delete Everything FFirst
+        c.execute('DELETE FROM todo_list;',);
 
-        # Delete everything in the database table
-        c.execute('DELETE FROM todo_list;',)
-   
-        
-        # Create Blank List To Hold Todo Items
+        # Create Blank Dictionary To Hold Todo Items
         items = []
         # Loop through the listWidget and pull out each item
         for index in range(self.mylist_listWidget.count()):
@@ -122,24 +113,27 @@ class Ui_MainWindow(object):
 
         for item in items:
             #print(item.text())
-            # Add stuff to the table
+        
+            
+
+            # Add New Record
             c.execute("INSERT INTO todo_list VALUES (:item)",
                 {
                     'item': item.text(),
+                    
                 })
+            
 
-
-
-        # Commit the changes
+        # Commit changes
         conn.commit()
 
         # Close our connection
         conn.close()   
 
-        # Pop up box
+        # Message Box
         msg = QMessageBox()
-        msg.setWindowTitle("Saved To Database!!")
-        msg.setText("Your Todo List Has Been Saved!")
+        msg.setWindowTitle("Saved To Database")
+        msg.setText("Your List Has Been Saved!")
         msg.setIcon(QMessageBox.Information)
         x = msg.exec_()
 
@@ -151,6 +145,7 @@ class Ui_MainWindow(object):
         self.clearall_pushButton_3.setText(_translate("MainWindow", "Clear The List"))
         self.savedb_pushButton.setText(_translate("MainWindow", "Save To Database"))
 
+    
 
 if __name__ == "__main__":
     import sys
