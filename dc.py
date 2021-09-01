@@ -10,16 +10,16 @@ class UI(QMainWindow):
 		# Load the ui file
 		uic.loadUi("dc.ui", self)
 
-		# Define Our Widgets
-		self.combo1 = self.findChild(QComboBox, "comboBox") 
+		# Define our widgets
+		self.combo1 = self.findChild(QComboBox, "comboBox")
 		self.combo2 = self.findChild(QComboBox, "comboBox_2")
 		self.label = self.findChild(QLabel, "label")
 
-		# Add Items To The Dropdown boxes
+		# Add items to the comboBox
 		self.combo1.addItem("Male", ["John", "Wes", "Dan"])
 		self.combo1.addItem("Female", ["April", "Steph", "Beth"])
 
-		# Click First Dropdown Box
+		# Click The Dropdown Box
 		self.combo1.activated.connect(self.clicker)
 		self.combo2.activated.connect(self.clicker2)
 		
@@ -29,7 +29,7 @@ class UI(QMainWindow):
 	def clicker(self, index):
 		# Clear the second box
 		self.combo2.clear()
-		# Do the dependant thing
+		# Do the dependent thing
 		self.combo2.addItems(self.combo1.itemData(index))
 
 	def clicker2(self):
