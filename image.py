@@ -24,9 +24,10 @@ class UI(QMainWindow):
 		fname = QFileDialog.getOpenFileName(self, "Open File", "c:\\gui\\images", "All Files (*);;PNG Files (*.png);;Jpg Files (*.jpg)")
 
 		# Open The Image
-		self.pixmap = QPixmap(fname[0])
-		# Add Pic to label
-		self.label.setPixmap(self.pixmap)
+		if fname:
+			self.pixmap = QPixmap(fname[0])
+			# Add Pic to label
+			self.label.setPixmap(self.pixmap)
 
 # Initialize The App
 app = QApplication(sys.argv)
