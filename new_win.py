@@ -13,6 +13,7 @@ class UI(QMainWindow):
 		# Define our widgets QPushButton
 		self.mdi = self.findChild(QMdiArea, "mdiArea")
 		self.button = self.findChild(QPushButton, "pushButton")
+		
 
 		# Click Button
 		self.button.clicked.connect(self.add_window)
