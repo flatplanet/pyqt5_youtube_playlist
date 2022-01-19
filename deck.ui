@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>400</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: &quot;green&quot;;</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="spushButton">
+    <property name="geometry">
+     <rect>
+      <x>125</x>
+      <y>290</y>
+      <width>150</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: light gray;</string>
+    </property>
+    <property name="text">
+     <string>Shuffle Start/Over</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="dpushButton">
+    <property name="geometry">
+     <rect>
+      <x>325</x>
+      <y>290</y>
+      <width>150</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: light gray;</string>
+    </property>
+    <property name="text">
+     <string>Deal Cards</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="dealerlabel">
+    <property name="geometry">
+     <rect>
+      <x>125</x>
+      <y>40</y>
+      <width>150</width>
+      <height>218</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/cards/2_of_clubs.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="playerLabel">
+    <property name="geometry">
+     <rect>
+      <x>325</x>
+      <y>40</y>
+      <width>150</width>
+      <height>218</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/cards/2_of_diamonds.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="dlabel">
+    <property name="geometry">
+     <rect>
+      <x>125</x>
+      <y>10</y>
+      <width>47</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Dealer</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="plabel">
+    <property name="geometry">
+     <rect>
+      <x>445</x>
+      <y>10</y>
+      <width>47</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Player</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>600</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
