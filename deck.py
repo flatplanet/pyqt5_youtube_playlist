@@ -41,65 +41,65 @@ class UI(QMainWindow):
 		# 11 = Jack, 12=Queen, 13=King, 14=Ace
 
 		# Create Deck
-		global deck
-		deck = []
+		#global deck
+		self.deck = []
 
 		for suit in suits:
 			for value in values:
-				deck.append(f"{value}_of_{suit}")
+				self.deck.append(f"{value}_of_{suit}")
 		
 		# Create Our Players
-		global dealer, player
-		dealer = []
-		player = []
+		#global dealer, player
+		self.dealer = []
+		self.player = []
 
 		# Grab a random Card for Dealer
-		card = random.choice(deck)
+		card = random.choice(self.deck)
 		# Remove That Card From The Deck
-		deck.remove(card)
+		self.deck.remove(card)
 		# Add That Card To Dealers List
-		dealer.append(card)
+		self.dealer.append(card)
 		#Output Card To Screen
 		pixmap = QPixmap(f'images/cards/{card}.png')
 		self.dealerLabel.setPixmap(pixmap)
 
 		# Grab a random Card for Player
-		card = random.choice(deck)
+		card = random.choice(self.deck)
 		# Remove That Card From The Deck
-		deck.remove(card)
+		self.deck.remove(card)
 		# Add That Card To Dealers List
-		player.append(card)
+		self.player.append(card)
 		#Output Card To Screen
 		pixmap = QPixmap(f'images/cards/{card}.png')
 		self.playerLabel.setPixmap(pixmap)
 
 		# Update Titlebar
-		self.setWindowTitle(f"{len(deck)} Cards Left In Deck...")
+		self.setWindowTitle(f"{len(self.deck)} Cards Left In Deck...")
 
 	def dealCards(self):
 		try:
 			# Grab a random Card for Dealer
-			card = random.choice(deck)
+			card = random.choice(self.deck)
 			# Remove That Card From The Deck
-			deck.remove(card)
+			self.deck.remove(card)
 			# Add That Card To Dealers List
-			dealer.append(card)
+			self.dealer.append(card)
 			#Output Card To Screen
 			pixmap = QPixmap(f'images/cards/{card}.png')
 			self.dealerLabel.setPixmap(pixmap)
 
 			# Grab a random Card for Player
-			card = random.choice(deck)
+			card = random.choice(self.deck)
 			# Remove That Card From The Deck
-			deck.remove(card)
+			self.deck.remove(card)
 			# Add That Card To Dealers List
-			player.append(card)
+			self.player.append(card)
 			#Output Card To Screen
 			pixmap = QPixmap(f'images/cards/{card}.png')
 			self.playerLabel.setPixmap(pixmap)
 
 			# Update Titlebar
-			self.setWindowTitle(f"{len(deck)} Cards Left In Deck...")
+			self.setWindowTitle(f"{len(self.deck)} Cards Left In Deck...")
 
 		except:
 			self.setWindowTitle("Game Over")
