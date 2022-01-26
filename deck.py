@@ -103,6 +103,7 @@ class UI(QMainWindow):
 
 		except:
 			self.setWindowTitle("Game Over")
+			
 
 	
 # Initialize The App

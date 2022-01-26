@@ -93,8 +93,13 @@
       <x>125</x>
       <y>10</y>
       <width>150</width>
-      <height>13</height>
+      <height>21</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Dealer</string>
@@ -103,14 +108,22 @@
    <widget class="QLabel" name="plabel">
     <property name="geometry">
      <rect>
-      <x>430</x>
+      <x>329</x>
       <y>10</y>
-      <width>40</width>
-      <height>13</height>
+      <width>141</width>
+      <height>21</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Player</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
   </widget>
